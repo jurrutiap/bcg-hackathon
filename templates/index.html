@@ -1,0 +1,26 @@
+{% extends "base_template.html" %}
+
+{% load static %}
+
+{% block head_content %}
+<title>CriptoBros - Home</title>
+{% endblock %}
+
+{% block main %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- 404 Error Text -->
+    <div class="text-center">
+        <div class="sidebar-brand-icon">
+            <i class="fa-solid fa-user-secret fa-2xl w3-text-teal" style="font-size:360px"></i>
+        </div>
+        <p class="text-gray-500 mb-0">Use the sidebar to select the encryption method</p>
+        <a href="{% url 'home'%}">&larr; Go to encrypt something! 🕵️</a>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+<!-- </body> -->

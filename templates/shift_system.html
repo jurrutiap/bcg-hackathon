@@ -1,0 +1,75 @@
+{% extends "base_template.html" %}
+
+{% load static %}
+
+{% block head_content %}
+<title>Search Tab</title>
+{% endblock %}
+
+{% block main %}
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v0.44.2/mapbox-gl.css' rel='stylesheet' />
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Search for ur parking</h1>
+    <p class="mb-4"></p>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <div class="col-xl-8 col-lg-7">
+
+            <div id='map' width="100%" style='height:400px'></div>
+            <script>
+             mapboxgl.accessToken = 'pk.eyJ1IjoianVycnV0aWFwIiwiYSI6ImNsbmY0YmdjOTBoNGwya3JpbnB3dDN4b3UifQ.U7ld5qVva8zy9ZibouV10g'
+             var map = new mapboxgl.Map({
+              container: 'map',
+              style: 'mapbox://styles/mapbox/streets-v10',
+              center: [-74.07231699675322, 4.66336863727521],
+              zoom: 13
+             });
+            </script>
+
+            <!-- Encrypt Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Buscador</h6>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="" target="_self">
+                        {% csrf_token %} 
+                        <div class="chart-area">
+                            <textarea name='textC' class="form-control" rows="1" required>{{ clear }}</textarea>
+                        </div>
+                        <input name="encrypt" class="btn btn-primary btn-block" type="submit" value="Search">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Output Chart -->
+        <div class="col-xl-4 col-lg-5">
+            <!-- Outputs Chart -->
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Outputs</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+                    <div class="chart-area">
+                        <textarea class="form-control" rows="4">{{ data }}</textarea>
+                    </div>         
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
+{% endblock %}
+<!-- </body> -->
